@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>模型切換</title>
 
+    <!-- Babylon Viewer -->
     <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
 
     <style>
@@ -11,6 +12,16 @@
             margin: 0;
             padding: 20px;
             font-family: Arial;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        select {
+            font-size: 16px;
+            padding: 5px;
+            margin-bottom: 10px;
         }
 
         .viewerContainer {
@@ -24,11 +35,6 @@
             height: 100%;
             display: block;
         }
-
-        select {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 
@@ -37,20 +43,25 @@
 <h1>我改這個</h1>
 
 <select onchange="loadit(this.value)">
-    <option value="models/girl.glb">girl.glb</option>
-    <option value="models/girl1.glb">girl1.glb</option>
-    <option value="models/girl2.glb">girl2.glb</option>
+    <option value="models/cac-1777347116869.glb">girl.glb</option>
+    <option value="models/cac-1777347116869.glb">girl1.glb</option>
+    <option value="models/cac-1777347116869.glb">girl2.glb</option>
 </select>
 
 <div class="viewerContainer">
-    <babylon id="viewerID" model="models/girl.glb"></babylon>
+    <!-- 預設載入 -->
+    <babylon id="viewerID" model="models/cac-1777347116869.glb"></babylon>
 </div>
-
 
 <script>
 function loadit(modelUrl) {
+    if (!modelUrl) return;
+
     const viewer = BabylonViewer.viewerManager.getViewerById("viewerID");
-    viewer.loadModel(modelUrl);
+
+    viewer.loadModel({
+        url: modelUrl
+    });
 }
 </script>
 
