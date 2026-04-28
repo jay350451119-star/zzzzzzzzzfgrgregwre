@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>我改這個</title>
-        <style>
-			.viewerContainer {
-                width: 400px;
-                height: 500px;				
-				image-rendering: pixelated; /* to prevent blury when zoomed out */
-			}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我改這個</title>
 
-        </style>
-		<script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
-	<script>
-		function loadit(modelUrl) {
-			if(modelUrl) {
-				let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
-				viewer.loadModel(modelUrl)
-			}
-		}
-	</script>
+    <style>
+        .viewerContainer {
+            width: 400px;
+            height: 500px;
+        }
+
+        babylon {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+
+    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+
+    <script>
+        function loadit(modelUrl) {
+            if (modelUrl) {
+                let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
+                viewer.loadModel(modelUrl);
+            }
+        }
+    </script>
 </head>
-<body>
-<select onchange="loadit(this.value)">
-	<option value="">select model</option>
-	<option value="./models/girl.glb">Alice</option>
-	<option value="./models/girl1.glb">Astronaut</option>
-	<option value="./models/girl2.glb">Stacy</option>
-</select>
-<div class='viewerContainer'>
-	<babylon id="viewerID"></babylon>
-</div>
-</body>
 
+<body>
+    <h1>我改這個</h1>
+
+    <select onchange="loadit(this.value)">
+        <option value="">select model</option>
+        <option value="./models/girl.glb">Alice</option>
+        <option value="./models/girl1.glb">Astronaut</option>
+        <option value="./models/girl2.glb">Stacy</option>
+    </select>
+
+    <div class="viewerContainer">
+        <babylon id="viewerID"></babylon>
+    </div>
+</body>
 </html>
