@@ -2,31 +2,21 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>模型切換</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Selector</title>
 
-    <!-- Babylon Viewer -->
     <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
 
     <style>
         body {
-            margin: 0;
-            padding: 20px;
             font-family: Arial;
-        }
-
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        select {
-            font-size: 16px;
-            padding: 5px;
-            margin-bottom: 10px;
+            padding: 20px;
         }
 
         .viewerContainer {
             width: 500px;
             height: 600px;
+            margin-top: 20px;
             background: #000;
         }
 
@@ -36,34 +26,40 @@
             display: block;
         }
     </style>
+
+    <script>
+        function loadit(modelUrl) {
+            if (!modelUrl) return;
+
+            const viewer = BabylonViewer.viewerManager.getViewerById("viewerID");
+
+            viewer.loadModel({
+                url: modelUrl
+            });
+        }
+    </script>
 </head>
 
 <body>
 
-<h1>我改這個</h1>
+<h2>Select Model</h2>
 
 <select onchange="loadit(this.value)">
-    <option value="models/cac-1777347116869.glb">girl.glb</option>
-    <option value="models/cac-1777347116869.glb">girl1.glb</option>
-    <option value="models/cac-1777347116869.glb">girl2.glb</option>
+    <option value="">select model</option>
+
+    <!-- 原本的 -->
+    <option value="models/alice.glb">Alice</option>
+    <option value="models/Astronaut.glb">Astronaut</option>
+    <option value="models/stacy_lightweight.glb">Stacy</option>
+
+    <!-- 🔥 你的模型 -->
+    <option value="models/cac-1774423884809.glb">My Model</option>
 </select>
 
 <div class="viewerContainer">
-    <!-- 預設載入 -->
-    <babylon id="viewerID" model="models/cac-1777347116869.glb"></babylon>
+    <!-- 預設顯示 Alice -->
+    <babylon id="viewerID" model="models/alice.glb"></babylon>
 </div>
-
-<script>
-function loadit(modelUrl) {
-    if (!modelUrl) return;
-
-    const viewer = BabylonViewer.viewerManager.getViewerById("viewerID");
-
-    viewer.loadModel({
-        url: modelUrl
-    });
-}
-</script>
 
 </body>
 </html>
