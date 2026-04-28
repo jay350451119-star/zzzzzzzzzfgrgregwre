@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BabylonJS Viewer</title>
 
-    <!-- Babylon Viewer -->
     <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
 
     <style>
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
+        .viewerContainer {
+            width: 400px;
+            height: 500px;
+            background: #000;
         }
 
         babylon {
@@ -22,10 +20,29 @@
             display: block;
         }
     </style>
+
+    <script>
+        function loadit(modelUrl) {
+            if (modelUrl) {
+                let viewer = BabylonViewer.viewerManager.getViewerById("viewerID");
+                viewer.loadModel(modelUrl);
+            }
+        }
+    </script>
 </head>
 
 <body>
-    <!-- 注意 model 路徑 -->
-    <babylon model="models/girl.glb"></babylon>
+
+<select onchange="loadit(this.value)">
+    <option value="">select model</option>
+    <option value="./models/cac-1777347116869.glb">cac-1777347116869.glb</option>
+</select>
+
+<div class="viewerContainer">
+    <babylon id="viewerID" model="./models/cac-1777347116869.glb">
+        <vr></vr>
+    </babylon>
+</div>
+
 </body>
 </html>
