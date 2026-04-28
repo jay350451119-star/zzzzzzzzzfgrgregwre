@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BabylonJS Viewer</title>
+    <title>Babylon Viewer</title>
 
+    <!-- Babylon Viewer -->
     <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
 
     <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial;
+        }
+
         .viewerContainer {
             width: 400px;
             height: 500px;
@@ -20,26 +27,14 @@
             display: block;
         }
     </style>
-
-    <script>
-        function loadit(modelUrl) {
-            if (modelUrl) {
-                let viewer = BabylonViewer.viewerManager.getViewerById("viewerID");
-                viewer.loadModel(modelUrl);
-            }
-        }
-    </script>
 </head>
 
 <body>
 
-<select onchange="loadit(this.value)">
-    <option value="">select model</option>
-    <option value="./models/cac-1777347116869.glb">cac-1777347116869.glb</option>
-</select>
+<h2>My 3D Model</h2>
 
 <div class="viewerContainer">
-    <babylon id="viewerID" model="./models/cac-1777347116869.glb">
+    <babylon id="viewerID" model="cac-1777347116869.glb">
         <vr></vr>
     </babylon>
 </div>
