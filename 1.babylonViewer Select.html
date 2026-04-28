@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我改這個</title>
+    <title>模型選擇</title>
+
+    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
 
     <style>
         .viewerContainer {
-            width: 400px;
-            height: 500px;
+            width: 500px;
+            height: 625px;
+            background: #ccc;
         }
 
         babylon {
@@ -16,32 +18,35 @@
             height: 100%;
             display: block;
         }
-    </style>
 
-    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
-
-    <script>
-        function loadit(modelUrl) {
-            if (modelUrl) {
-                let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
-                viewer.loadModel(modelUrl);
-            }
+        select {
+            width: 120px;
+            font-size: 16px;
         }
-    </script>
+    </style>
 </head>
 
 <body>
-    <h1>我改這個</h1>
 
-    <select onchange="loadit(this.value)">
-        <option value="">select model</option>
-        <option value="./models/girl.glb">Alice</option>
-        <option value="./models/girl1.glb">Astronaut</option>
-        <option value="./models/girl2.glb">Stacy</option>
-    </select>
+<select id="modelSelect" onchange="loadit(this.value)">
+    <option value="models/girl.glb">girl.glb</option>
+    <option value="models/girl1.glb">girl1.glb</option>
+    <option value="models/girl2.glb">girl2.glb</option>
+</select>
 
-    <div class="viewerContainer">
-        <babylon id="viewerID"></babylon>
-    </div>
+<div class="viewerContainer">
+    <babylon id="viewerID" model="models/girl.glb"></babylon>
+</div>
+
+<script>
+    function loadit(modelUrl) {
+        const viewer = BabylonViewer.viewerManager.getViewerById("viewerID");
+
+        viewer.loadModel({
+            url: modelUrl
+        });
+    }
+</script>
+
 </body>
 </html>
